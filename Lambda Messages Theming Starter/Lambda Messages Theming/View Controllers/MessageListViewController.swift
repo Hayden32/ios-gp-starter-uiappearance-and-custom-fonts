@@ -13,6 +13,8 @@ class MessageListViewController: UIViewController, UITableViewDelegate, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setUpAppearance()
+        
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -49,8 +51,29 @@ class MessageListViewController: UIViewController, UITableViewDelegate, UITableV
         
         cell.textLabel?.text = message.text
         cell.detailTextLabel?.text = message.sender
+        style(cell: cell)
         
         return cell
+    }
+    
+    func style(cell: UITableViewCell) {
+        cell.textLabel?.font = AppearanceHelper.typerighterFont(with: .body, pointSize: 30)
+        cell.detailTextLabel?.font = AppearanceHelper.typerighterFont(with: .caption1, pointSize: 25)
+        
+        cell.backgroundColor = AppearanceHelper.backgroundGrey
+        cell.textLabel?.textColor = .white
+        cell.detailTextLabel?.textColor = .white
+    }
+    
+    func setUpAppearance() {
+        tableView.backgroundColor = AppearanceHelper.backgroundGrey
+        tableView.tableHeaderView?.backgroundColor = AppearanceHelper.backgroundGrey
+        
+        AppearanceHelper.style(button: newMessageButton)
+        newMessageButton.layer.cornerRadius = newMessageButton.frame.height / 2
+        
+        newMessageButton.layer.borderWidth = 0.8
+        newMessageButton.layer.borderColor = UIColor.white.cgColor
     }
 
     let messageController = MessageController()

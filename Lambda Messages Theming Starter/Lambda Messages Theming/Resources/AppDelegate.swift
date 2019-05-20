@@ -15,6 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        // This is the earlist we can run the code, we need to set the appearance before all of the UI elements are initalized.
+        AppearanceHelper.setDarkAppearance()
+        
+        
         return true
     }
 
